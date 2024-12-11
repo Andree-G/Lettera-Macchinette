@@ -7,24 +7,52 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #1a1a1a;
+            color: white;
             margin: 0;
             padding: 0;
         }
         .container {
             width: 80%;
             margin: 20px auto;
-            background-color: white;
+            background-color: #2c2c2c;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
         h1 {
             text-align: center;
-            color: #d9534f;
+            color: #ff4d4d;
         }
         p {
             line-height: 1.6;
+            font-size: 16px;
+        }
+        .highlight {
+            background-color: #ff4d4d;
+            color: black;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+        }
+        .highlight.enlarged {
+            font-size: 24px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .highlight-button {
+            background-color: #ff4d4d;
+            color: black;
+            font-size: 18px;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .highlight-button:hover {
+            background-color: #e60000;
         }
     </style>
 </head>
@@ -36,7 +64,7 @@
 
         <p>Mi permetto di scrivere questa lettera per esprimere un malcontento che, credo, non sia solo mio, ma che accomuna molti dei miei compagni di scuola. È ormai evidente che la nostra scuola sia completamente indifferente alle necessità basilari degli studenti. Una di queste è la totale assenza di macchinette distributrici di bevande e snack. Un'assenza che, francamente, è inaccettabile e che merita una riflessione urgente.</p>
 
-        <p>Perché, vi chiedo, siamo costretti a passare le giornate a scuola con la sensazione di essere prigionieri senza neanche un minimo di conforto? Il fatto che, durante le lunghe ore di lezione, non ci sia la possibilità di acquistare un semplice caffè o una bottiglia d’acqua è, per non dire altro, vergognoso. Le pause sono brevi e, nonostante ciò, è impensabile pensare di dover uscire dalla scuola, affrontare il caos delle strade, solo per comprare qualcosa da bere o mangiare.</p>
+        <p>Perché, vi chiedo, siamo costretti a passare le giornate a scuola con la sensazione di essere prigionieri senza neanche un minimo di conforto? <span id="incisive-phrase" class="highlight">Il fatto che, durante le lunghe ore di lezione, non ci sia la possibilità di acquistare un semplice caffè o una bottiglia d’acqua è, per non dire altro, vergognoso.</span> Le pause sono brevi e, nonostante ciò, è impensabile pensare di dover uscire dalla scuola, affrontare il caos delle strade, solo per comprare qualcosa da bere o mangiare.</p>
 
         <p>Per non parlare delle ore in cui la nostra attenzione è messa a dura prova e la stanchezza ci assale. Come possiamo concentrarci su un’interminabile lezione di matematica o storia, se il nostro corpo ci segnala il bisogno di energia, ma siamo costretti a restare impotenti di fronte alla totale carenza di opzioni? Non è solo una questione di comodità: è una questione di sopravvivenza, almeno mentale!</p>
 
@@ -47,7 +75,25 @@
         <p>In attesa di una vostra risposta, che spero sia positiva, vi saluto cordialmente.</p>
 
         <p>Uno studente esasperato e affamato</p>
+
+        <div class="button-container">
+            <button class="highlight-button" onclick="enlargeText()">Enlarge the Phrase</button>
+        </div>
     </div>
+
+    <script>
+        let enlargeCount = 0;
+
+        function enlargeText() {
+            const phrase = document.getElementById("incisive-phrase");
+            enlargeCount++;
+            if (enlargeCount % 2 !== 0) {
+                phrase.classList.add("enlarged");
+            } else {
+                phrase.classList.remove("enlarged");
+            }
+        }
+    </script>
 
 </body>
 </html>
